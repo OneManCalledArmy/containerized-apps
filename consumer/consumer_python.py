@@ -1,10 +1,19 @@
 import pika, sys, os
 import redis
 
-redis_client = redis.Redis(host='127.0.0.1', port=6379)
+RABBIT_HOST = os.getenv('RABBIT_HOST')
+RABBIT_PORT = os.getenv('RABBIT_PORT')
+RABBIT_USERNAME=os.getenv('RABBIT_USERNAME')
+RABBIT_PASSWORD=os.getenv('RABBIT_PASSWORD')
+REDIS_HOST = os.getenv('REDIS_HOST')
+REDIS_PORT = os.getenv('REDIS_PORT')
+
+redis_client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT)
 
 def main():
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    credentials = pika.PlainCredentials(RABBIT_USERNAME, RABBIT_PASSWORD)
+    parameters = pika.ConnectionParameters(host=RABBIT_HOST, port=RABBIT_PORT, credentials=credentials)
+    connection = pika.BlockingConnection(parameters)
     channel = connection.channel()
     channel.queue_declare(queue='q1')
     

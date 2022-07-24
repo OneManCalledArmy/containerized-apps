@@ -5,4 +5,4 @@ WORKDIR /app
 COPY requirements.txt /app/
 RUN pip install -r requirements.txt
 COPY . /app/
-CMD python3 consumer_python.py
+CMD python3 sizer_python.py
