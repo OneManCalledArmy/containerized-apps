@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash /path/to/script
 
 # REDIS_HOST=redis-sys
 # REDIS_PORT=6379

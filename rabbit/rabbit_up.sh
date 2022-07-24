@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# docker network create --driver bridge real_devops_sht
+docker network create --driver bridge real_devops_sht
 
 docker run -d --rm --net real_devops_sht --hostname crazy-rabbit --name crazy-rabbit rabbitmq:3.8
 
