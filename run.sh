@@ -7,10 +7,10 @@
 # RABBIT_USERNAME=guest
 # RABBIT_PASSWORD=guest
 
-docker network create --driver bridge real_devops_sht
+# docker network create --driver bridge real_devops_sht
 
-./rabbit/rabbit_up.sh
-./redis/redis_up.sh
-./producer/producer_up.sh
-./consumer/consumer_up.sh
-./sizer/sizer_up.sh
+# ./rabbit/rabbit_up.sh
+# ./redis/redis_up.sh
+# ./producer/producer_up.sh
+# ./consumer/consumer_up.sh
+# ./sizer/sizer_up.sh
