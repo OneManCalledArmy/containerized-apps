@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/containerized-apps/consumer
+cd /home/jacek/containerized-apps/consumer
 # cd /consumer
 
 docker build . -t consumer:v1.0.0
