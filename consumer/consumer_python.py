@@ -13,9 +13,9 @@ REDIS_PORT = os.getenv('REDIS_PORT')
 redis_client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT)
 
 
-pid = os.getpid()
-now = datetime.now()
-date_time = now.strftime("%Y/%m/%d/%H:%M:%S")
+# pid = os.getpid()
+# now = datetime.now()
+# date_time = now.strftime("%Y/%m/%d/%H:%M:%S")
 
 def main():
     credentials = pika.PlainCredentials(RABBIT_USERNAME, RABBIT_PASSWORD)
