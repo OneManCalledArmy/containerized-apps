@@ -14,9 +14,9 @@ parameters = pika.ConnectionParameters(host=RABBIT_HOST, port=RABBIT_PORT, crede
 connection = pika.BlockingConnection(parameters)
 
 
-@app.route('/')
-def greeting():
-    return f'Running.'
+@app.route('/health')
+def health():
+    return f"200"
 
 
 @app.route('/add', methods = ['POST'])
