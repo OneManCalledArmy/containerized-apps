@@ -6,14 +6,14 @@ metadata:
     app: producer-python
 spec:
   replicas: 1
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 3
-      maxUnavailable: 1
-      timeoutSeconds: 100
-      intervalSeconds: 5
-      updatePeriodSeconds: 5
+  # strategy:
+  #   type: RollingUpdate
+  #   rollingUpdate:
+  #     maxSurge: 3
+  #     maxUnavailable: 1
+  #     timeoutSeconds: 100
+  #     intervalSeconds: 5
+  #     updatePeriodSeconds: 5
   selector:
     matchLabels:
       app: producer-python
