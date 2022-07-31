@@ -25,7 +25,17 @@ spec:
       containers:
       - name: producer-python
         # image: ${REGISTRY_URL}/producer-python:v1.0.1
-        image: onemancalledarmy/producer-python/v1.0.3
+        # image: onemancalledarmy/producer-python/v1.0.3
+        image: onemancalledarmy/producer-python/v0.0.3
+        env:
+          - name: RABBIT_HOST
+            value: rabbit-manager
+          - name: RABBIT_PORT
+            value: 5672
+          - name: RABBIT_USERNAME
+            value: guest
+          - name: RABBIT_PASSWORD
+            value: guest        
         ports:
         - containerPort: 5000
         resources:
