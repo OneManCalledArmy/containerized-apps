@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: producer-python
 spec:
-  clusterIP: producer-python
+  # clusterIP: producer-python
   ports:
   - port: 5000
     targetPort: 80
