@@ -5,15 +5,15 @@ metadata:
   labels:
     app: tester
 spec:
-  replicas: 1
-  # strategy:
-  #   type: RollingUpdate
-  #   rollingUpdate:
-  #     maxSurge: 3
-  #     maxUnavailable: 1
-  #     timeoutSeconds: 100
-  #     intervalSeconds: 5
-  #     updatePeriodSeconds: 5
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    # rollingUpdate:
+    #   maxSurge: 3
+    #   maxUnavailable: 1
+    #   timeoutSeconds: 100
+    #   intervalSeconds: 5
+    #   updatePeriodSeconds: 5
   selector:
     matchLabels:
       app: tester
@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: tester
-        image: onemancalledarmy/tester/v1.0.0
+        image: onemancalledarmy/tester:v1.0.0
         env:
           - name: test-key
             value: test-value

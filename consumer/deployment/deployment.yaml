@@ -3,39 +3,44 @@ kind: Deployment
 metadata:
   name: consumer-python
   labels:
-    app: consumer
+    app: consumer-python
 spec:
-  replicas: 1
+  replicas: 2
   strategy:
     type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 3
-      maxUnavailable: 1
-      timeoutSeconds: 100
-      intervalSeconds: 5
-      updatePeriodSeconds: 5
+  #   rollingUpdate:
+  #     maxSurge: 3
+  #     maxUnavailable: 1
+  #     timeoutSeconds: 100
+  #     intervalSeconds: 5
+  #     updatePeriodSeconds: 5
   selector:
     matchLabels:
-      app: consumer
+      app: consumer-python
   template:
     metadata:
       labels:
-        app: consumer
+        app: consumer-python
     spec:
       containers:
-      - name: consumer
-        # image: ${REGISTRY_URL}/consumer:v1.0.1
+      - name: consumer-python
+        # image: ${REGISTRY_URL}/consumer-python:v1.0.1
+        image: onemancalledarmy/consumer-python:v1.0.1
+        env:
+          - name: RABBIT_HOST
+            value: rabbit-manager
+          - name: RABBIT_PORT
+            value: "5672"
+          - name: RABBIT_USERNAME
+            value: guest
+          - name: RABBIT_PASSWORD
+            value: guest
+          - name: REDIS_HOST
+            value: redis-sys
+          - name: REDIS_PORT
+            value: "6379"
         ports:
-        - containerPort: 80
-        # env:
-        #   - name: RABBIT_HOST
-        #     value: rabbit-manager
-        #   - name: RABBIT_PORT
-        #     value: 5672
-        #   - name: RABBIT_USERNAME
-        #     value: guest
-        #   - name: RABBIT_PASSWORD
-        #     value: guest
+        - containerPort: 5000
         resources:
           requests:
             memory: "64Mi"
@@ -45,21 +50,7 @@ spec:
             cpu: "200m"
         readinessProbe:
           httpGet:
-            # wystawic endpoint
             path: /health
-            port: 8080
+            port: 5000
           initialDelaySeconds: 5
           periodSeconds: 5
----
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: consumer
-# spec:
-#   clusterIP: None
-#   ports:
-#   - port: 5000
-#     targetPort: 4369
-#     name: discovery
-#   selector:
-#     app: consumer

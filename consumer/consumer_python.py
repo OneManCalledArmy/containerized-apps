@@ -1,3 +1,5 @@
+# v1.0.1
+
 import pika
 import sys, os
 import redis
@@ -13,9 +15,12 @@ REDIS_PORT = os.getenv('REDIS_PORT')
 redis_client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT)
 
 
-# pid = os.getpid()
-# now = datetime.now()
-# date_time = now.strftime("%Y/%m/%d/%H:%M:%S")
+def time_pid():
+    pid = os.getpid()
+    current_time = datetime.now()
+    date_time = current_time.strftime("%Y/%m/%d/%H:%M:%S")
+    output = date_time + '/' + str(pid)
+    return output
 
 def main():
     credentials = pika.PlainCredentials(RABBIT_USERNAME, RABBIT_PASSWORD)
@@ -24,14 +29,12 @@ def main():
     channel = connection.channel()
     channel.queue_declare(queue='q1')
     
-    idx = 0
     
-    def callback(ch, method, properties, body):
-        nonlocal idx
-        
-        redis_client.set(idx, body.decode())
-        redis_client.expire(idx, 60)
-        idx += 1
+    def callback(ch, method, properties, body):        
+        redkey = time_pid()
+        redis_client.set(redkey, body.decode())
+        redis_client.expire(redkey, 60)
+
     
     channel.basic_consume(queue='q1', on_message_callback=callback, auto_ack=True)
     channel.start_consuming()

@@ -5,9 +5,9 @@ metadata:
   labels:
     app: sizer-python
 spec:
-  replicas: 1
-  # strategy:
-  #   type: RollingUpdate
+  replicas: 2
+  strategy:
+    type: RollingUpdate
   #   rollingUpdate:
   #     maxSurge: 3
   #     maxUnavailable: 1
@@ -25,8 +25,7 @@ spec:
       containers:
       - name: sizer-python
         # image: ${REGISTRY_URL}/sizer-python:v1.0.1
-        image: onemancalledarmy/sizer-python/v1.0.1
-        # image: onemancalledarmy/sizer-python/v0.0.4
+        image: onemancalledarmy/sizer-python:v1.0.2
         env:
           - name: REDIS_HOST
             value: redis-sys

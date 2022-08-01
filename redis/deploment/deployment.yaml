@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: redis-db
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redis-db
+    spec:
+      hostname: redis-sys
+      containers:
+      - name: redis-db
+        image: redis:7-apline
+        imagePullPolicy: IfNotPresent
+        command: ["/usr/local/bin/redis-server"]
+        args: ["/redis-conf/redis.conf"]
+        ports:
+        - containerPort: 7000
+        - containerPort: 17000

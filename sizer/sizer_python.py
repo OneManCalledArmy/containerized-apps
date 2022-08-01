@@ -1,3 +1,5 @@
+# sizer-python:v1.0.2
+
 from flask import Flask
 import redis
 import os

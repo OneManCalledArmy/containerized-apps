@@ -5,9 +5,9 @@ metadata:
   labels:
     app: producer-python
 spec:
-  replicas: 1
-  # strategy:
-  #   type: RollingUpdate
+  replicas: 2
+  strategy:
+    type: RollingUpdate
   #   rollingUpdate:
   #     maxSurge: 3
   #     maxUnavailable: 1
@@ -25,8 +25,7 @@ spec:
       containers:
       - name: producer-python
         # image: ${REGISTRY_URL}/producer-python:v1.0.1
-        # image: onemancalledarmy/producer-python/v1.0.3
-        image: onemancalledarmy/producer-python/v0.0.4
+        image: onemancalledarmy/producer-python:v1.0.4
         env:
           - name: RABBIT_HOST
             value: rabbit-manager
@@ -47,7 +46,6 @@ spec:
             cpu: "200m"
         readinessProbe:
           httpGet:
-            # wystawic endpoint
             path: /health
             port: 5000
           initialDelaySeconds: 5

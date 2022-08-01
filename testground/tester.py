@@ -1,21 +1,16 @@
 # tester:v1.0.0
 
-from flask import Flask
+from time import sleep
 import os
+from datetime import datetime
 
-TEST_KEY = os.getenv('test-key')
+def time_pid():
+    pid = os.getpid()
+    current_time = datetime.now()
+    date_time = current_time.strftime("%Y/%m/%d/%H:%M:%S")
+    output = date_time + '/' + str(pid)
+    return output
 
-app = Flask(__name__)
-
-@app.route('/health')
-def health():
-    return f"200"
-
-
-@app.route('/size')
-def get_size():
-    return TEST_KEY
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+for _ in range(10):
+    print(time_pid())
+    sleep(0.5)
