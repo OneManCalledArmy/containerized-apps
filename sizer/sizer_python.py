@@ -8,6 +8,10 @@ REDIS_PORT = os.getenv('REDIS_PORT')
 redis_client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT)
 app = Flask(__name__)
 
+@app.route('/health')
+def health():
+    return f"200"
+
 
 @app.route('/size')
 def get_size():

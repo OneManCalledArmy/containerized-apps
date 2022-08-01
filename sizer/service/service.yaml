@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sizer-python
+spec:
+  # clusterIP: sizer-python
+  ports:
+  - port: 5000
+    targetPort: 5000
+    name: sizer-python-svc
+  selector:
+    app: sizer-python

@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: producer-python
+  name: sizer-python
   labels:
-    app: producer-python
+    app: sizer-python
 spec:
   replicas: 1
   # strategy:
@@ -16,26 +16,22 @@ spec:
   #     updatePeriodSeconds: 5
   selector:
     matchLabels:
-      app: producer-python
+      app: sizer-python
   template:
     metadata:
       labels:
-        app: producer-python
+        app: sizer-python
     spec:
       containers:
-      - name: producer-python
-        # image: ${REGISTRY_URL}/producer-python:v1.0.1
-        # image: onemancalledarmy/producer-python/v1.0.3
-        image: onemancalledarmy/producer-python/v0.0.4
+      - name: sizer-python
+        # image: ${REGISTRY_URL}/sizer-python:v1.0.1
+        image: onemancalledarmy/sizer-python/v1.0.1
+        # image: onemancalledarmy/sizer-python/v0.0.4
         env:
-          - name: RABBIT_HOST
-            value: rabbit-manager
-          - name: RABBIT_PORT
-            value: "5672"
-          - name: RABBIT_USERNAME
-            value: guest
-          - name: RABBIT_PASSWORD
-            value: guest        
+          - name: REDIS_HOST
+            value: redis-sys
+          - name: REDIS_PORT
+            value: "6379"
         ports:
         - containerPort: 5000
         resources:
