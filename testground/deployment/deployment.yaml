@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tester
+  labels:
+    app: tester
+spec:
+  replicas: 1
+  # strategy:
+  #   type: RollingUpdate
+  #   rollingUpdate:
+  #     maxSurge: 3
+  #     maxUnavailable: 1
+  #     timeoutSeconds: 100
+  #     intervalSeconds: 5
+  #     updatePeriodSeconds: 5
+  selector:
+    matchLabels:
+      app: tester
+  template:
+    metadata:
+      labels:
+        app: tester
+    spec:
+      containers:
+      - name: tester
+        image: onemancalledarmy/tester/v1.0.0
+        env:
+          - name: test-key
+            value: test-value
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
+        readinessProbe:
+          httpGet:
+            # wystawic endpoint
+            path: /health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 5
