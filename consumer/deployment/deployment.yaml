@@ -36,8 +36,9 @@ spec:
           - name: RABBIT_PASSWORD
             value: guest
           - name: REDIS_HOST
-            value: redis-sys
+            value: s
           - name: REDIS_PORT
+          # port name?
             value: "6379"
         ports:
         - containerPort: 5000

@@ -58,3 +58,9 @@ kubectl apply -f sizer/service/service.yaml
 Nginx
 ---
 kubectl apply -f nginx/deployment/deployment.yaml
+
+Redis:
+---
+
+RabbitMq:
+---
