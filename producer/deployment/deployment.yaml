@@ -28,7 +28,7 @@ spec:
         image: onemancalledarmy/producer-python:v1.0.4
         env:
           - name: RABBIT_HOST
-            value: rabbit-manager
+            value: rabbitmq
           - name: RABBIT_PORT
             value: "5672"
           - name: RABBIT_USERNAME
