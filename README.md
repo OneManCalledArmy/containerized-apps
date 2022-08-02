@@ -1,3 +1,10 @@
+#TODO:
+run containers as non-root users
+https://stackoverflow.com/questions/27701930/how-to-add-users-to-docker-container
+
+change to specific namespace
+
+
 APP:
 ---
 Build image:
@@ -61,6 +68,16 @@ kubectl apply -f nginx/deployment/deployment.yaml
 
 Redis:
 ---
+
+kubectl apply -f sc.yaml
+
+kubectl apply -f pv.yaml
+
+kubectl apply -n default -f redis-config.yaml
+
+kubectl apply -n default -f redis-statefulset.yaml
+
+kubectl apply -n default -f redis-service.yaml
 
 RabbitMq:
 ---
