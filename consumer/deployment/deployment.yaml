@@ -36,7 +36,7 @@ spec:
           - name: RABBIT_PASSWORD
             value: guest
           - name: REDIS_HOST
-            value: s
+            value: redis-db
           - name: REDIS_PORT
           # port name?
             value: "6379"
@@ -49,9 +49,9 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "200m"
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 5000
+        # readinessProbe:
+        #   httpGet:
+        #     path: /health
+        #     port: 5000
           initialDelaySeconds: 5
           periodSeconds: 5

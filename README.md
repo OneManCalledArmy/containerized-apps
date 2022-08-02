@@ -81,3 +81,7 @@ kubectl apply -n default -f redis-service.yaml
 
 RabbitMq:
 ---
+kubectl apply -n default -f .\kubernetes\rabbit-rbac.yaml
+kubectl apply -n default -f .\kubernetes\rabbit-configmap.yaml
+kubectl apply -n default -f .\kubernetes\rabbit-secret.yaml
+kubectl apply -n default -f .\kubernetes\rabbit-statefulset.yaml
