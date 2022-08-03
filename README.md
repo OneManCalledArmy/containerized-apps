@@ -73,8 +73,8 @@ kubectl apply -f ingress-nginx/cluster-role-binding.yaml
 kubectl apply -f ingress-nginx/configMap.yaml
 kubectl apply -f ingress-nginx/custom-snippets.configmap.yaml
 kubectl apply -f ingress-nginx/deployment.yaml
-kubectl apply -f ingress-nginx/
-kubectl apply -f ingress-nginx/
+kubectl apply -f ingress-nginx/service.yaml
+kubectl apply -f ingress-nginx/ingress-nginx-python-sizer.yaml
 
 Redis:
 ---
