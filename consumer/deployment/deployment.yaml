@@ -5,7 +5,7 @@ metadata:
   labels:
     app: consumer-python
 spec:
-  replicas: 2
+  replicas: 1
   strategy:
     type: RollingUpdate
   #   rollingUpdate:
@@ -28,7 +28,7 @@ spec:
         image: onemancalledarmy/consumer-python:v1.0.1
         env:
           - name: RABBIT_HOST
-            value: rabbitmq
+            value: "rabbitmq-0.rabbitmq.default.svc.cluster.local"
           - name: RABBIT_PORT
             value: "5672"
           - name: RABBIT_USERNAME
