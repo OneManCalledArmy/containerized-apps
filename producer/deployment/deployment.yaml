@@ -25,7 +25,7 @@ spec:
       containers:
       - name: producer-python
         # image: ${REGISTRY_URL}/producer-python:v1.0.1
-        image: onemancalledarmy/producer-python:v1.0.4
+        image: onemancalledarmy/producer-python:v1.0.5
         env:
           - name: RABBIT_HOST
             value: rabbitmq

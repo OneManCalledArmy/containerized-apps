@@ -4,6 +4,9 @@ https://stackoverflow.com/questions/27701930/how-to-add-users-to-docker-containe
 
 change to specific namespace
 
+Inspect pod:
+---
+kubectl exec -it pod-name -- sh
 
 APP:
 ---
@@ -78,6 +81,11 @@ kubectl apply -n default -f redis-config.yaml
 kubectl apply -n default -f redis-statefulset.yaml
 
 kubectl apply -n default -f redis-service.yaml
+
+Rabbit - simple version
+---
+docker build . -t onemancalledarmy/rabbitmq:v1.0.0
+docker push onemancalledarmy/rabbitmq:v1.0.0
 
 RabbitMq:
 ---
