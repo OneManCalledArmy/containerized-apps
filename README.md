@@ -74,7 +74,7 @@ kubectl apply -f ingress-nginx/configMap.yaml
 kubectl apply -f ingress-nginx/custom-snippets.configmap.yaml
 kubectl apply -f ingress-nginx/deployment.yaml
 kubectl apply -f ingress-nginx/service.yaml
-kubectl apply -f ingress-nginx/ingress-nginx-python-sizer.yaml
+kubectl apply -f ingress-nginx/ingress-nginx.yaml
 
 Redis:
 ---
