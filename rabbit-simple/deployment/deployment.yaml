@@ -1,0 +1,24 @@
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  name: rabbit
+  namespace: app
+  labels: 
+    app: rabbitmq 
+spec: 
+  selector: 
+    matchLabels:
+      app: rabbitmq 
+  replicas: 1
+  template: 
+    metadata: 
+      name: rabbitmq
+      labels: 
+        app: rabbitmq
+        type: queue
+    spec: 
+      containers: 
+        - name: rabbitmq-container
+          image: twoje_repo_z_obrazem
+          ports: 
+            - containerPort: 15672
