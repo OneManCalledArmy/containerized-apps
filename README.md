@@ -78,11 +78,6 @@ kubectl apply -n default -f redis-config.yaml
 kubectl apply -n default -f redis-statefulset.yaml
 kubectl apply -n default -f redis-service.yaml
 
-Rabbit - simple version
----
-docker build . -t onemancalledarmy/rabbitmq:v1.0.0
-docker push onemancalledarmy/rabbitmq:v1.0.0
-
 RabbitMq:
 ---
 kubectl apply -n default -f rabbit/rabbit-rbac.yaml
