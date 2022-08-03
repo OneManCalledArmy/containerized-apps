@@ -73,13 +73,9 @@ Redis:
 ---
 
 kubectl apply -f sc.yaml
-
 kubectl apply -f pv.yaml
-
 kubectl apply -n default -f redis-config.yaml
-
 kubectl apply -n default -f redis-statefulset.yaml
-
 kubectl apply -n default -f redis-service.yaml
 
 Rabbit - simple version
@@ -89,7 +85,7 @@ docker push onemancalledarmy/rabbitmq:v1.0.0
 
 RabbitMq:
 ---
-kubectl apply -n default -f .\kubernetes\rabbit-rbac.yaml
-kubectl apply -n default -f .\kubernetes\rabbit-configmap.yaml
-kubectl apply -n default -f .\kubernetes\rabbit-secret.yaml
-kubectl apply -n default -f .\kubernetes\rabbit-statefulset.yaml
+kubectl apply -n default -f rabbit/rabbit-rbac.yaml
+kubectl apply -n default -f rabbit/rabbit-configmap.yaml
+kubectl apply -n default -f rabbit/rabbit-secret.yaml
+kubectl apply -n default -f rabbit/rabbit-statefulset.yaml
