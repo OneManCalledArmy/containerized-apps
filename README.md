@@ -65,9 +65,16 @@ kubectl apply -f sizer/deployment/deployment.yaml
 Service:
 kubectl apply -f sizer/service/service.yaml
 
-Nginx
+Ingress - nginx
 ---
-kubectl apply -f nginx/deployment/deployment.yaml
+kubectl apply -f ingress-nginx/service-account.yaml
+kubectl apply -f ingress-nginx/cluster-role.yaml
+kubectl apply -f ingress-nginx/cluster-role-binding.yaml
+kubectl apply -f ingress-nginx/configMap.yaml
+kubectl apply -f ingress-nginx/custom-snippets.configmap.yaml
+kubectl apply -f ingress-nginx/deployment.yaml
+kubectl apply -f ingress-nginx/
+kubectl apply -f ingress-nginx/
 
 Redis:
 ---
