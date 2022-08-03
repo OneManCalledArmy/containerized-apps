@@ -1,4 +1,4 @@
-#v1.0.5
+#v1.0.5 - connection not failing
 
 from flask import Flask, request
 import pika
@@ -11,7 +11,9 @@ RABBIT_PASSWORD=os.getenv('RABBIT_PASSWORD')
 
 app = Flask(__name__)
 
-
+credentials = pika.PlainCredentials(RABBIT_USERNAME, RABBIT_PASSWORD)
+parameters = pika.ConnectionParameters(host=RABBIT_HOST, port=RABBIT_PORT, credentials=credentials)
+connection = pika.BlockingConnection(parameters)
 
 
 @app.route('/health')
@@ -20,11 +22,7 @@ def health():
 
 @app.route('/add', methods = ['POST'])
 def process():
-    if request.method == 'POST':
-        credentials = pika.PlainCredentials(RABBIT_USERNAME, RABBIT_PASSWORD)
-        parameters = pika.ConnectionParameters(host=RABBIT_HOST, port=RABBIT_PORT, credentials=credentials)
-        connection = pika.BlockingConnection(parameters)
-        
+    if request.method == 'POST':        
         data = request.json
         channel = connection.channel()
         channel.queue_declare(queue='q1')

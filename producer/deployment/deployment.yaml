@@ -5,7 +5,7 @@ metadata:
   labels:
     app: producer-python
 spec:
-  replicas: 2
+  replicas: 1
   strategy:
     type: RollingUpdate
   #   rollingUpdate:
@@ -25,12 +25,15 @@ spec:
       containers:
       - name: producer-python
         # image: ${REGISTRY_URL}/producer-python:v1.0.1
-        image: onemancalledarmy/producer-python:v1.0.5
+        # connection failing - rabbit settings
+        image: onemancalledarmy/producer-python:v1.0.4
+        # connection not failing - rabbit connection inside a method
+        # image: onemancalledarmy/producer-python:v1.0.5
         env:
           - name: RABBIT_HOST
             value: rabbitmq
           - name: RABBIT_PORT
-            value: "5672"
+            value: "15672"
           - name: RABBIT_USERNAME
             value: guest
           - name: RABBIT_PASSWORD

@@ -1,7 +1,7 @@
 apiVersion: apps/v1 
 kind: Deployment 
 metadata: 
-  name: rabbit
+  name: rabbitmq
   namespace: default
   labels: 
     app: rabbitmq 
@@ -19,6 +19,6 @@ spec:
     spec: 
       containers: 
         - name: rabbitmq
-          image: onemancalledarmy/rabbitmq:v1.0.0
+          image: onemancalledarmy/rabbitmq:v1.0.1
           ports: 
-            - containerPort: 5672
+            - containerPort: 15672
