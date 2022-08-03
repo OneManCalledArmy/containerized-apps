@@ -80,6 +80,8 @@ kubectl apply -n default -f redis-service.yaml
 
 RabbitMq:
 ---
+!apply pv first
+
 kubectl apply -n default -f rabbit/rabbit-rbac.yaml
 kubectl apply -n default -f rabbit/rabbit-configmap.yaml
 kubectl apply -n default -f rabbit/rabbit-secret.yaml
