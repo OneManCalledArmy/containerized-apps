@@ -8,6 +8,10 @@ Inspect pod:
 ---
 kubectl exec -it pod-name -- sh
 
+Port forward:
+---
+kubectl port-forward svc/pod port host:port
+
 APP:
 ---
 Build image:
