@@ -23,4 +23,4 @@ spec:
             service:
               name: producer-python
               port:
-                number: 80
+                number: 5000

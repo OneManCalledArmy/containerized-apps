@@ -6,7 +6,7 @@ spec:
   # clusterIP: producer-python
   ports:
   - port: 5000
-    targetPort: 80
+    targetPort: 5000
     name: producer-python-svc
   selector:
     app: producer-python
