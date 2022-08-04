@@ -10,7 +10,7 @@ kubectl exec -it pod-name -- sh
 
 Port forward:
 ---
-kubectl port-forward svc/pod port host:port
+kubectl port-forward svc/pod/whatever port host:port
 
 APP:
 ---
